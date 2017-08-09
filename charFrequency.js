@@ -23,4 +23,22 @@ function characterFrequency (string) {
   return results;
 }
 
-// My refactored solution
+// better solution
+function characterFrequency (string) {
+  var memo = {};
+  for (var letter of string) {
+    if (memo[letter] === undefined) {
+      memo[letter] = 1;
+    } else {
+      memo[letter]++;
+    }
+  }
+
+  return Object
+           .keys(memo)
+           .map(key => [key, memo[key]])
+           .sort((a, b) => {
+             var valueSort = b[1] - a[1];
+             return valueSort === 0 ? a[0].localeCompare(b[0]) : valueSort;
+           });
+}
