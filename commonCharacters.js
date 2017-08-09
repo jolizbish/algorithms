@@ -28,3 +28,14 @@ function commonCharacters(str1, str2) {
   }
   return result;
 }
+
+// shorter solution + explanation
+
+var commonCharacters = function(str1, str2){
+  //
+  return str1.split('').reduce(function(cur, next) {
+    //Ternary (sp?) statement: if str !contains next character AND current results !contains next character, concatenate
+    // results array with next character, else return current array of results.
+    return str2.indexOf(next) != -1 && cur.indexOf(next) == -1  && next !== ' ' ? cur.concat(next) : cur
+  }, []).join(''); // join results into string
+};
