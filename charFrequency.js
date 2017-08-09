@@ -22,3 +22,5 @@ function characterFrequency (string) {
 
   return results;
 }
+
+// My refactored solution
