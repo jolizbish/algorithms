@@ -14,3 +14,18 @@ Array.prototype.isSubsetOf = function(array) {
   }
   return result;
 };
+
+// My refactored solution
+Array.prototype.isSubsetOf = function(array) {
+  for (var i = 0; i < this.length; i++) {
+    if (!array.includes(this[i])) {
+      return false;
+    }
+  }
+  return true;
+}
+
+//Solution using .filter()
+Array.prototype.isSubsetOf = function(array) {
+  return !this.filter((el) => { return !array.includes(el)}).length;
+}
