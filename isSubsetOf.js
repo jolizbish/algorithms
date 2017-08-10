@@ -29,3 +29,16 @@ Array.prototype.isSubsetOf = function(array) {
 Array.prototype.isSubsetOf = function(array) {
   return !this.filter((el) => { return !array.includes(el)}).length;
 }
+
+  /* returns the opposite equivalent boolean of the length of the filtered
+  array-- if the array has a length, returns false, else if length === 0,
+  returns true */
+
+
+// Solution using .reduce()
+
+Array.prototype.isSubsetOf = function(array) {
+  return this.reduce((cur, next) => cur && array.includes(next), true);
+}
+  /* reduce starts at true, turns false if the array doesn't include the
+  next character. returns boolean value at end of reduce. */
