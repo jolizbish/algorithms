@@ -21,3 +21,17 @@ function evenOccurrence (arr) {
   }
   return null;
 }
+
+// Solution using forEach
+function evenOccurrence (arr) {
+  var results = {};
+  arr.forEach(function(el) {
+    !results[el] ? results[el] = 1 : results[el]++;
+  });
+  for (var item of arr) {
+    if (results[item] % 2 === 0) {
+      return item;
+    }
+  }
+  return null;
+}
