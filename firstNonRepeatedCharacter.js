@@ -32,3 +32,14 @@ function firstNonRepeatedCharacter (string) {
   }
   return 'sorry';
 }
+
+// Other elegant solutions:
+function firstNonRepeatedCharacter (string) {
+  for (var char of string) {
+
+    if (string.indexOf(char) === string.lastIndexOf(char)) {
+      return char;
+    }
+  }
+  return 'sorry';
+}
