@@ -92,11 +92,9 @@ Tree.prototype.removeChild = function(child){
 // ------SOLVE BELOW HERE-------
 Tree.prototype.BFSelect = function(filter) {
   var result = [];
-
   function queueNodes(node, depth) {
     var queue = [];
     for (var i = 0; i < node.length; i++) {
-      console.log('value: ', node[i].value, 'depth: ', depth);
       if (filter(node[i].value, depth)) {
         result.push(node[i].value);
       }
