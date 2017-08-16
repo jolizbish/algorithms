@@ -76,3 +76,12 @@ Tree.prototype.map = function(cb) {
   }
   return mapTree(this);
 }
+
+// Other elegant solutions
+Tree.prototype.map = function(cb) {
+  var newTree = new Tree(cb(this.value));
+  this.children.forEach(child => {
+    newTree.children.push(child.map(cb));
+  });
+  return newTree;
+}
