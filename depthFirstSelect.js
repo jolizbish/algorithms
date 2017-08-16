@@ -2,7 +2,9 @@
 --------------
 Implement a depth-first method on a tree class.
 
-DFSelect accepts a filter function, calls that function on each of the nodes in Depth First order, and returns a flat array of node values of the tree for which the filter returns true.
+DFSelect accepts a filter function, calls that function on each of the
+nodes in Depth First order, and returns a flat array of node values of the tree
+for which the filter returns true.
 
 Example:
 --------
@@ -85,3 +87,19 @@ Tree.prototype.DFSelect = function(filter) {
   recurse(this);
   return filtered;
 };
+
+// refactored solution
+
+Tree.prototype.DFSelect = function(filter) {
+  var results = [];
+  function depthFirst(node, depth) {
+    if (filter(node.value, depth)) {
+      results.push(node.value)
+    }
+    for (child of node.children) {
+      depthFirst(child, depth + 1);
+    }
+  }
+  depthFirst(this, 0);
+  return results;
+}
