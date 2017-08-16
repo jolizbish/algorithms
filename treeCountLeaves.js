@@ -78,3 +78,10 @@ Tree.prototype.countLeaves = function () {
     }, 0);
   }
 }
+
+// slightly refactored solutions
+Tree.prototype.countLeaves = function() {
+  return this.children.length ? this.children.reduce (function(cur, next) {
+    return cur + next.countLeaves();
+  }, 0) : 1;
+}
