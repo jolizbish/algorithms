@@ -69,7 +69,7 @@ Tree.prototype.removeChild = function(child) {
 
 // ------SOLVE BELOW HERE-------
 
-Tree.prototype.countLeaves = function (counter) {
+Tree.prototype.countLeaves = function () {
   if (!this.children.length) {
     return 1;
   } else {
