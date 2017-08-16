@@ -64,3 +64,15 @@ Tree.prototype.map = function (callback) {
   }
   return mappedTree(this);
 };
+
+// Refactored solution
+Tree.prototype.map = function(cb) {
+  function mapTree(node) {
+    var newBranch = new Tree(cb(node.value));
+    node.children.forEach(function(child) {
+      newBranch.addChild(mapTree(child));
+    })
+    return newBranch;
+  }
+  return mapTree(this);
+}
