@@ -103,3 +103,16 @@ Tree.prototype.DFSelect = function(filter) {
   depthFirst(this, 0);
   return results;
 }
+
+// more elegant solution using the method recursively rather than an internal function
+
+Tree.prototype.DFSelect = function(filter, depth = 0) {
+  var results = [];
+  if (filter(this.value, depth)) {
+    results.push(this.value);
+  } // base case
+  this.children.forEach(child => {
+    results = results.concat(child.DFSelect(filter, depth + 1));
+  });
+  return results;
+}
